@@ -279,7 +279,7 @@ export function SubcontractListTable({
                     shape="square"
                     size="sm"
                     variant="borderless"
-                    onButtonClick={() => navigate(`/pm-subcontracts/${record.id}`)}
+                    onButtonClick={() => navigate(`/${record.id}`)}
                   >
                     <ModusWcIcon decorative name="pencil" size="xs" variant="outlined" />
                   </ModusWcButton>

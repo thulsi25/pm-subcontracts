@@ -32,7 +32,7 @@ export function PmSubcontractsPage() {
   const handleAddNew = useCallback(() => {
     const draft = createNewSubcontractRecord()
     saveSubcontractRecord(draft)
-    navigate(`/pm-subcontracts/${draft.id}`)
+    navigate(`/${draft.id}`)
   }, [navigate])
 
   const handleDeleteSelected = useCallback(() => {

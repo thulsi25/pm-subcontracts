@@ -62,13 +62,13 @@ export function PmSubcontractDetailPage() {
 
   useEffect(() => {
     if (!id) {
-      navigate('/pm-subcontracts')
+      navigate('/')
       return
     }
 
     const existing = getSubcontractById(id)
     if (!existing) {
-      navigate('/pm-subcontracts')
+      navigate('/')
       return
     }
 
@@ -104,7 +104,7 @@ export function PmSubcontractDetailPage() {
 
   const goToRecord = useCallback(
     (nextId: string) => {
-      navigate(`/pm-subcontracts/${nextId}`)
+      navigate(`/${nextId}`)
     },
     [navigate],
   )
@@ -122,13 +122,13 @@ export function PmSubcontractDetailPage() {
   const handleDelete = useCallback(() => {
     if (!record) return
     deleteSubcontractRecord(record.id)
-    navigate('/pm-subcontracts')
+    navigate('/')
   }, [navigate, record])
 
   const handleCreate = useCallback(() => {
     const draft = createNewSubcontractRecord()
     saveSubcontractRecord(draft)
-    navigate(`/pm-subcontracts/${draft.id}`)
+    navigate(`/${draft.id}`)
   }, [navigate])
 
   const handleSave = useCallback(() => {
@@ -161,7 +161,7 @@ export function PmSubcontractDetailPage() {
     <div className="page-main sl-page-detail">
       <SubcontractDetailSummary
         record={record}
-        onBack={() => navigate('/pm-subcontracts')}
+        onBack={() => navigate('/')}
       />
 
       <SubcontractDetailToolbar

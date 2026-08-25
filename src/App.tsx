@@ -1,11 +1,14 @@
 import { ModusWcThemeProvider } from '@trimble-oss/moduswebcomponents-react'
 import { setAssetPath } from '@trimble-oss/moduswebcomponents/components'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AppNavbar } from './components/AppNavbar'
 import { PmSubcontractDetailPage } from './pages/PmSubcontractDetailPage'
 import { PmSubcontractsPage } from './pages/PmSubcontractsPage'
 
-setAssetPath(`${window.location.origin}/`)
+const baseUrl = import.meta.env.BASE_URL
+const routerBasename = baseUrl.replace(/\/$/, '') || '/'
+
+setAssetPath(`${window.location.origin}${baseUrl}`)
 
 function AppShell() {
   return (
@@ -16,8 +19,7 @@ function AppShell() {
           <main id="main-content">
             <Routes>
               <Route path="/" element={<PmSubcontractsPage />} />
-              <Route path="/pm-subcontracts" element={<Navigate to="/" replace />} />
-              <Route path="/pm-subcontracts/:id" element={<PmSubcontractDetailPage />} />
+              <Route path="/:id" element={<PmSubcontractDetailPage />} />
             </Routes>
           </main>
         </div>
@@ -29,7 +31,7 @@ function AppShell() {
 export default function App() {
   return (
     <ModusWcThemeProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename}>
         <AppShell />
       </BrowserRouter>
     </ModusWcThemeProvider>
